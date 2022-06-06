@@ -33,7 +33,7 @@ function Form({ onSubmit }) {
       name,
       number,
     };
-    console.log(state);
+
     onSubmit(state);
   };
 

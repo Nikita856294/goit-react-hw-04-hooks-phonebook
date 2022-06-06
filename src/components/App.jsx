@@ -18,12 +18,7 @@ function App() {
   //   filter: '',
   // };
 
-  const [contacts, setContacts] = useState([
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ]);
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   // componentDidMount() {
@@ -45,15 +40,17 @@ function App() {
   // }
 
   useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    const parsedTodos = JSON.parse(contacts);
-    if (parsedTodos) {
-      setContacts(parsedTodos);
+    const contactsLocal = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contactsLocal);
+
+    if (parsedContacts && parsedContacts.length !== 0) {
+      setContacts(parsedContacts);
     }
   }, []);
 
   useEffect(() => {
     console.log(contacts);
+
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
@@ -80,7 +77,7 @@ function App() {
     );
   };
   const changeFilter = e => {
-    setFilter({ filter: e.currentTarget.value });
+    setFilter(e.currentTarget.value);
   };
 
   const nozmalizedContacts = filter.toLowerCase();
