@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 function Form({ onSubmit }) {
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
